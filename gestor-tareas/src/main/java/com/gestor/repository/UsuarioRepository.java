@@ -1,6 +1,7 @@
-package repository;
+package com.gestor.repository;
 
-import model.Usuario;
+import com.gestor.model.Usuario;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * Clase con la lista de todos los usuarios y sus metodos correspondientes para añadir, borrar, buscar o comprobar si un usuario ya existe
  */
+@Repository
 public class UsuarioRepository {
 	private List<Usuario> usuarios = new ArrayList<>();
 
@@ -15,8 +17,8 @@ public class UsuarioRepository {
 	 * Constructor de el repositorio
 	 * @param usuarios Lista de usuarios
 	 */
-	public UsuarioRepository(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public UsuarioRepository() {
+		this.usuarios = new ArrayList<>();
 	}
 
 	/**

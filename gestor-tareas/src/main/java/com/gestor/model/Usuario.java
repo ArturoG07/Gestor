@@ -1,4 +1,4 @@
-package model;
+package com.gestor.model;
 
 /**
  * Clase que representa a un usuario del sistema.

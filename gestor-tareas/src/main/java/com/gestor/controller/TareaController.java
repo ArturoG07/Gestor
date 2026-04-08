@@ -1,7 +1,9 @@
-package controller;
+package com.gestor.controller;
 
-import service.TareaService;
+import com.gestor.service.TareaService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TareaController {
 	private TareaService tareaService;
 

@@ -1,8 +1,10 @@
-package service;
+package com.gestor.service;
 
-import repository.TareaRepository;
-import repository.UsuarioRepository;
+import com.gestor.repository.TareaRepository;
+import com.gestor.repository.UsuarioRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TareaService {
 	private TareaRepository tareas;
 	private UsuarioRepository usuarios;

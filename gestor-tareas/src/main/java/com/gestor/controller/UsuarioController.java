@@ -1,7 +1,9 @@
-package controller;
+package com.gestor.controller;
 
-import service.UsuarioService;
+import com.gestor.service.UsuarioService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuarioController {
 	private UsuarioService usuarios;
 
