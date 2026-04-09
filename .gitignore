@@ -29,3 +29,32 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Windows ###
+Thumbs.db
+
+### Maven ###
+target/
+*.jar
+*.war
+*.ear
+*.class
+.mvn/wrapper/maven-wrapper.jar
+
+### Logs ###
+*.log
+logs/
+
+### Temporary files ###
+*.tmp
+*.swp
+*.bak
+
+### Environment ###
+.env
+.env.local
+.env.production
+
+### Spring Boot ###
+application-*.yml
+application-*.properties
