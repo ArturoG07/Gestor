@@ -1,13 +1,20 @@
 package com.gestor.controller;
 
+import com.gestor.model.UsuarioLoginDTO;
 import com.gestor.service.UsuarioService;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
 
-@Component
+@RestController
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
-	private UsuarioService usuarios;
+	private UsuarioService usuarioService;
 
-	public UsuarioController(UsuarioService usuarios) {
-		this.usuarios = usuarios;
+	public UsuarioController(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
+
+	@PostMapping("/login")
+	public boolean login(@RequestBody UsuarioLoginDTO datos) {
+		return usuarioService.loginCorrecto(datos.getNombre(), datos.getPasswd());
 	}
 }

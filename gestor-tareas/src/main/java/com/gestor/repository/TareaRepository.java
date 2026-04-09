@@ -16,7 +16,6 @@ public class TareaRepository {
 
 	/**
 	 * Crea la lista de tareas
-	 * @param tareas Lista con las tareas a poner
 	 */
 	public TareaRepository() {
 		this.tareas = new ArrayList<>();

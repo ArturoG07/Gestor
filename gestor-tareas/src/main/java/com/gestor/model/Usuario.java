@@ -16,7 +16,7 @@ public class Usuario {
 	private String nombre;
 
 	/** Contraseña del usuario */
-	private String contraseña;
+	private String passwd;
 
 	/**
 	 * Constructor de la clase Usuario.
@@ -24,12 +24,12 @@ public class Usuario {
 	 *
 	 * @param id Identificador único del usuario
 	 * @param nombre Nombre del usuario
-	 * @param contraseña Contraseña del usuario
+	 * @param passwd Contraseña del usuario
 	 */
-	public Usuario(int id, String nombre, String contraseña) {
+	public Usuario(int id, String nombre, String passwd) {
 		this.id = id;
 		this.nombre = nombre;
-		this.contraseña = contraseña;
+		this.passwd = passwd;
 	}
 
 	/**
@@ -73,16 +73,16 @@ public class Usuario {
 	 *
 	 * @return String Contraseña del usuario
 	 */
-	public String getContraseña() {
-		return contraseña;
+	public String getPasswd() {
+		return passwd;
 	}
 
 	/**
 	 * Establece una nueva contraseña para el usuario.
 	 *
-	 * @param contraseña Nueva contraseña a asignar
+	 * @param passwd Nueva contraseña a asignar
 	 */
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 }

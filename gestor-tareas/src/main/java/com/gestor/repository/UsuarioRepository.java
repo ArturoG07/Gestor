@@ -15,7 +15,6 @@ public class UsuarioRepository {
 
 	/**
 	 * Constructor de el repositorio
-	 * @param usuarios Lista de usuarios
 	 */
 	public UsuarioRepository() {
 		this.usuarios = new ArrayList<>();

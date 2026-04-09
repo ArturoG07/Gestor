@@ -1,0 +1,12 @@
+com\gestor\controller\TareaController.class
+com\gestor\service\TareaService.class
+com\gestor\service\UsuarioService.class
+com\gestor\controller\UsuarioController.class
+com\gestor\model\UsuarioLoginDTO.class
+com\gestor\Main.class
+com\gestor\model\Usuario.class
+com\gestor\repository\TareaRepository.class
+com\gestor\model\Tarea$Estado.class
+com\gestor\model\Tarea.class
+com\gestor\ui\Vista.class
+com\gestor\repository\UsuarioRepository.class
