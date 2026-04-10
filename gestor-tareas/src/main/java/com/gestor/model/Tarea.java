@@ -52,11 +52,11 @@ public class Tarea {
 	 * @param nombre Nombre de la tarea
 	 * @param descripcion Descripción detallada de la tarea
 	 */
-	public Tarea(int id, String nombre, String descripcion, int idUsuario) {
+	public Tarea(int id, String nombre, String descripcion, int idUsuario, Estado estadoTarea) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.estadoTarea = Estado.PENDIENTE;
+		this.estadoTarea = estadoTarea;
 		this.idUsuario = idUsuario;
 	}
 
