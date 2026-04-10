@@ -1,8 +1,10 @@
 package com.gestor.repository;
 
+import com.gestor.config.ConexionBD;
 import com.gestor.model.Usuario;
 import org.springframework.stereotype.Repository;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +19,7 @@ public class UsuarioRepository {
 	 * Constructor de el repositorio
 	 */
 	public UsuarioRepository() {
-		Usuario admin = new Usuario(1, "admin", "admin");
-		this.usuarios = new ArrayList<>();
-		this.usuarios.add(admin);
+		this.usuarios = obtenerUsuarios();
 	}
 
 	/**
@@ -46,21 +46,6 @@ public class UsuarioRepository {
 	}
 
 	/**
-	 * Devuelve un usuario por su id, o null si no se encuentra
-	 * @param id id del usuario a buscar
-	 * @return Usuario encontrado por el id, o null si no se encontró
-	 */
-	public Usuario buscarPorId(int id) {
-		Usuario usuarioBuscado = null;
-		for (Usuario usuario : usuarios) {
-			if (usuario.getId() == id) {
-				usuarioBuscado = usuario;
-			}
-		}
-		return usuarioBuscado;
-	}
-
-	/**
 	 * Devolver todos los usuarios
 	 * @return usuarios lista de usuarios
 	 */
@@ -68,29 +53,30 @@ public class UsuarioRepository {
 		return usuarios;
 	}
 
-	/**
-	 * Eliminar por id y devolver true si se eliminó, false si no se encontró el usuario
-	 * @param id Id del usuario a eliminar
-	 * @return boolean indicando si se eliminó el usuario o no
- 	 */
-	public boolean eliminarPorId(int id) {
-		return usuarios.removeIf(u -> u.getId() == id);
-	}
 
-	/**
-	 * Comprueba si ya hay un usuario con ese nombre en la lista
-	 * @param nombre Nombre a comprobar
-	 * @return true si existe o false si no
-	 */
-	public boolean existeNombre(String nombre) {
-		return usuarios.stream().anyMatch(u -> u.getNombre().equals(nombre));
-	}
-	/**
-	 * Comprueba si ya hay un usuario con ese id en la lista
-	 * @param id Id a comprobar
-	 * @return true si existe o false si no
-	 */
-	public boolean existeId(int id) {
-		return usuarios.stream().anyMatch(u -> u.getId() == id);
+	public List<Usuario> obtenerUsuarios() {
+		List<Usuario> lista = new ArrayList<>();
+
+		String sql = "SELECT * FROM Usuarios";
+
+		try (Connection conn = ConexionBD.getConnection();
+			 Statement stmt = conn.createStatement();
+			 ResultSet rs = stmt.executeQuery(sql)) {
+
+			while (rs.next()) {
+				Usuario u = new Usuario(
+						rs.getInt("ID"),
+						rs.getString("Nombre"),
+						rs.getString("Passwd")
+				);
+
+				lista.add(u);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
 	}
 }

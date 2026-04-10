@@ -24,7 +24,7 @@ public class Tarea {
 		/**
 		 * La tarea esta en progreso
 		 */
-		EN_PROGRESO,
+		EN_PROCESO,
 		/**
 		 * La tarea ha sido completada
 		 */

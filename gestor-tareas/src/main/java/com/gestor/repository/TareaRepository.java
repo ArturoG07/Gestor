@@ -1,9 +1,15 @@
 package com.gestor.repository;
 
+import com.gestor.config.ConexionBD;
 import com.gestor.model.Tarea;
+import com.gestor.model.Usuario;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +25,7 @@ public class TareaRepository {
 	 * Crea la lista de tareas
 	 */
 	public TareaRepository() {
-		Tarea tarea = new Tarea(1, "tarea1", "desc", 1, Tarea.Estado.PENDIENTE);
-		Tarea tarea2 = new Tarea(2, "tarea2", "desc", 1, Tarea.Estado.COMPLETADA);
-		Tarea tarea3 = new Tarea(3, "tarea3", "desc", 1, Tarea.Estado.EN_PROGRESO);
-		this.tareas = new ArrayList<>();
-		tareas.add(tarea);
-		tareas.add(tarea2);
-		tareas.add(tarea3);
+		this.tareas = obtenerTareas();
 	}
 
 	/**
@@ -82,5 +82,33 @@ public class TareaRepository {
 	 */
 	public boolean existeId(int id) {
 		return tareas.stream().anyMatch(t -> t.getId() == id);
+	}
+
+	public List<Tarea> obtenerTareas() {
+		List<Tarea> lista = new ArrayList<>();
+
+		String sql = "SELECT * FROM Tareas";
+
+		try (Connection conn = ConexionBD.getConnection();
+			 Statement stmt = conn.createStatement();
+			 ResultSet rs = stmt.executeQuery(sql)) {
+
+			while (rs.next()) {
+				Tarea t = new Tarea(
+						rs.getInt("ID"),
+						rs.getString("Nombre"),
+						rs.getString("Descripcion"),
+						rs.getInt("IdUsuario"),
+						Tarea.Estado.valueOf(rs.getString("Estado"))
+				);
+
+				lista.add(t);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
 	}
 }

@@ -13,9 +13,12 @@ public class UsuarioService {
 	public UsuarioService(UsuarioRepository usuarios) {
 		this.usuarios = usuarios;
 	}
+
+
 	public int getIdUsuario(String nombre){
 		return usuarios.buscarPorNombre(nombre).getId();
 	}
+
 	public boolean loginCorrecto(String nombre, String password) {
 		boolean loginCorrecto = false;
 		List<Usuario> usuariosList = usuarios.buscarTodos();

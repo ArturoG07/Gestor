@@ -123,7 +123,7 @@ li button:hover {
 
 .tarea-estado.pendiente   { background: #FAEEDA; color: #854F0B; }
 .tarea-estado.completada  { background: #EAF3DE; color: #3B6D11; }
-.tarea-estado.en_progreso { background: #E6F1FB; color: #185FA5; }
+.tarea-estado.en_proceso { background: #E6F1FB; color: #185FA5; }
 
 .tarea-nombre {
     margin: 0;
