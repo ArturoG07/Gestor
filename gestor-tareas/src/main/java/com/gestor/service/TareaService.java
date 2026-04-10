@@ -20,6 +20,9 @@ public class TareaService {
 	public List<Tarea> getAllTareas() {
 		return tareas.buscarTodos();
 	}
+	public List<Tarea> getTareasUsuario(int idUsuario) {
+		return tareas.buscarTareasUsuario(idUsuario);
+	}
 
 	public Tarea getTareaById(int id) {
 		return tareas.buscarPorId(id);

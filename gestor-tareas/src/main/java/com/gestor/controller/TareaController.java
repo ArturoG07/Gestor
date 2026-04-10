@@ -15,29 +15,8 @@ public class TareaController {
 		this.tareaService = tareaService;
 	}
 
-	@GetMapping
-	public List<Tarea> getAllTareas() {
-		return tareaService.getAllTareas();
-	}
-
-	@GetMapping("/{id}")
-	public Tarea getTareaById(@PathVariable int id) {
-		return tareaService.getTareaById(id);
-	}
-
-	@PostMapping
-	public Tarea createTarea(@RequestBody Tarea tarea) {
-		return tareaService.createTarea(tarea);
-	}
-
-	@PutMapping("/{id}")
-	public Tarea updateTarea(@PathVariable int id, @RequestBody Tarea tarea) {
-		tarea.setId(id);
-		return tareaService.updateTarea(tarea);
-	}
-
-	@DeleteMapping("/{id}")
-	public void deleteTarea(@PathVariable int id) {
-		tareaService.deleteTarea(id);
+	@GetMapping("/cargarTareas")
+	public List<Tarea> getTareas(@RequestParam int id) {
+		return tareaService.getTareasUsuario(id);
 	}
 }

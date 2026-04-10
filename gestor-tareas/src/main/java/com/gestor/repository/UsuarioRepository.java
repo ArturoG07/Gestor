@@ -11,13 +11,15 @@ import java.util.List;
  */
 @Repository
 public class UsuarioRepository {
-	private List<Usuario> usuarios = new ArrayList<>();
+	private List<Usuario> usuarios;
 
 	/**
 	 * Constructor de el repositorio
 	 */
 	public UsuarioRepository() {
+		Usuario admin = new Usuario(1, "admin", "admin");
 		this.usuarios = new ArrayList<>();
+		this.usuarios.add(admin);
 	}
 
 	/**

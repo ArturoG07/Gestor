@@ -42,6 +42,7 @@ public class Tarea {
 	/** Estado actual de la tarea */
 	private Estado estadoTarea;
 
+	private int idUsuario;
 	/**
 	 * Constructor de la clase Tarea.
 	 * Inicializa la tarea con id, nombre y descripción, asignando por defecto
@@ -51,11 +52,12 @@ public class Tarea {
 	 * @param nombre Nombre de la tarea
 	 * @param descripcion Descripción detallada de la tarea
 	 */
-	public Tarea(int id, String nombre, String descripcion) {
+	public Tarea(int id, String nombre, String descripcion, int idUsuario) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.estadoTarea = Estado.PENDIENTE;
+		this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -128,5 +130,13 @@ public class Tarea {
 	 */
 	public void setEstadoTarea(Estado estadoTarea) {
 		this.estadoTarea = estadoTarea;
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 }

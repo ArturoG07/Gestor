@@ -17,4 +17,8 @@ public class UsuarioController {
 	public boolean login(@RequestBody UsuarioLoginDTO datos) {
 		return usuarioService.loginCorrecto(datos.getNombre(), datos.getPasswd());
 	}
+	@GetMapping("/pedirId")
+	public int getID(@RequestParam String nombre) {
+		return usuarioService.getIdUsuario(nombre);
+	}
 }

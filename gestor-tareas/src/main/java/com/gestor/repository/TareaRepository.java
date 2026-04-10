@@ -1,6 +1,7 @@
 package com.gestor.repository;
 
 import com.gestor.model.Tarea;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,13 +13,15 @@ import java.util.List;
 @Repository
 public class TareaRepository {
 
-	private List<Tarea> tareas = new ArrayList<>();
+	private List<Tarea> tareas;
 
 	/**
 	 * Crea la lista de tareas
 	 */
 	public TareaRepository() {
+		Tarea tarea = new Tarea(1, "tarea1", "desc", 1);
 		this.tareas = new ArrayList<>();
+		tareas.add(tarea);
 	}
 
 	/**
@@ -43,7 +46,15 @@ public class TareaRepository {
 		}
 		return tareaBuscada;
 	}
-
+	public List<Tarea> buscarTareasUsuario(int idUsuario) {
+		List<Tarea> lista = new ArrayList<>();
+		for (Tarea tarea : tareas) {
+			if (tarea.getIdUsuario() == idUsuario) {
+				lista.add(tarea);
+			}
+		}
+		return lista;
+	}
 	/**
 	 * Devuelve la lista con todas las tareas
 	 * @return la lista de las tareas
