@@ -79,3 +79,62 @@ li button {
 li button:hover {
     background-color: #c82333;
 }
+#contenedorTareas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.tarea {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tarea:hover {
+    border-color: #bbb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tarea-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarea-id {
+    font-size: 12px;
+    color: #999;
+    font-weight: 500;
+}
+
+.tarea-estado {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.tarea-estado.pendiente   { background: #FAEEDA; color: #854F0B; }
+.tarea-estado.completada  { background: #EAF3DE; color: #3B6D11; }
+.tarea-estado.en_progreso { background: #E6F1FB; color: #185FA5; }
+
+.tarea-nombre {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.tarea-desc {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}

@@ -20,8 +20,10 @@ public class TareaRepository {
 	 */
 	public TareaRepository() {
 		Tarea tarea = new Tarea(1, "tarea1", "desc", 1);
+		Tarea tarea2 = new Tarea(2, "tarea2", "desc", 1);
 		this.tareas = new ArrayList<>();
 		tareas.add(tarea);
+		tareas.add(tarea2);
 	}
 
 	/**

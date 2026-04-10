@@ -17,7 +17,6 @@ async function loginUsuario() {
         });
 
         const data = await response.json();
-
         if (data === true) {
             let id = await pedirID(nombre);
             cargarTareas(id);
@@ -29,8 +28,8 @@ async function cargarTareas(id) {
     const response = await fetch(`http://localhost:8080/api/tareas/cargarTareas?id=${encodeURIComponent(id)}`, {
         method: "GET"
     })
-    const data = await response.json()
-    console.log(data);
+    const data = await response.json();
+    mostrarTareas(data);
 }
 
 async function pedirID(nombre) {
@@ -40,4 +39,24 @@ async function pedirID(nombre) {
 
     const data = await response.json();
     return data;
+}
+function mostrarTareas(tareas) {
+    document.getElementById('usuarios').style.display = 'none';
+    document.querySelector('main').style.display = 'block';
+    const contenedor = document.getElementById('contenedorTareas');
+    contenedor.innerHTML = '';
+
+    tareas.forEach(tarea => {
+        const div = document.createElement('div');
+        div.classList.add('tarea');
+        div.innerHTML = `
+            <div class="tarea-header">
+                <span class="tarea-id">#${tarea.id}</span>
+                <span class="tarea-estado ${tarea.estadoTarea.toLowerCase()}">${tarea.estadoTarea}</span>
+            </div>
+            <h3 class="tarea-nombre">${tarea.nombre}</h3>
+            <p class="tarea-desc">${tarea.descripcion}</p>
+        `;
+        contenedor.appendChild(div);
+    });
 }
