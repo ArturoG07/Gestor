@@ -2,14 +2,12 @@ package com.gestor.repository;
 
 import com.gestor.config.ConexionBD;
 import com.gestor.model.Tarea;
+import com.gestor.model.TareaDTO;
 import com.gestor.model.Usuario;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,5 +108,24 @@ public class TareaRepository {
 		}
 
 		return lista;
+	}
+	public void guardar(TareaDTO tarea, int idUsuario) {
+
+		String sql = "INSERT INTO tareas (nombre, descripcion, id_usuario, estado) VALUES (?, ?, ?, ?)";
+
+		try (Connection conn = ConexionBD.getConnection();
+		     PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+			stmt.setString(1, tarea.getTitulo());
+			stmt.setString(2, tarea.getDescripcion());
+			stmt.setString(3, tarea.getEstado().name());
+			stmt.setInt(4, idUsuario);
+
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -63,3 +63,43 @@ function mostrarTareas(tareas) {
         contenedor.appendChild(div);
     });
 }
+document.getElementById("añadirTarea").addEventListener("click", () => {
+    document.getElementById("modal-add-tarea").classList.add("open");
+});
+document.getElementById("btn-cancelar-tarea").addEventListener("click", () => {
+    document.getElementById("modal-add-tarea").classList.remove("open");
+});
+document.getElementById("btn-guardar-tarea").addEventListener("click", () => {
+    if (camposTareaCorrectos()) {
+        document.getElementById("modal-add-tarea").classList.remove("open");
+        guardarTarea();
+    } else {
+
+    }
+})
+function camposTareaCorrectos() {
+    let titulo = document.getElementById("tarea-titulo").value;
+    let desc = document.getElementById("tarea-desc").value;
+    let estado = document.getElementById("tarea-estado").value;
+    if (titulo != null && desc != null && estado != null) {
+        return true;
+    } else {
+        return false;
+    }
+}
+async function guardarTarea() {
+    let titulo = document.getElementById("tarea-titulo").value;
+    let desc = document.getElementById("tarea-desc").value;
+    let estado = document.getElementById("tarea-estado").value;
+    const response = await fetch("http://localhost:8080/api/tareas/anadir", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            titulo: titulo,
+            descripcion: desc,
+            estado: estado,
+        })
+    });
+}

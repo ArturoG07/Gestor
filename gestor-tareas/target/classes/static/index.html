@@ -65,6 +65,7 @@
                 <div class="page-header">
                     <span class="page-title">Mis tareas</span>
                     <div id="contenedorTareas"></div>
+                    <button id="añadirTarea" class="btn-action accent">Añadir tarea</button>
                     <select id="user-filter-estado">
                         <option value="">Todos los estados</option>
                         <option value="pendiente">Pendiente</option>
@@ -113,6 +114,36 @@
                 <div class="modal-actions">
                     <button class="btn-action">Cerrar</button>
                     <button class="btn-action accent" id="btn-marcar-completada">Marcar como completada</button>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL: Añadir tarea -->
+        <div class="modal-backdrop" id="modal-add-tarea">
+            <div class="modal">
+                <h3>Añadir nueva tarea</h3>
+
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="tarea-titulo" placeholder="Ej: Estudiar Java">
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="tarea-desc" rows="3" placeholder="Describe la tarea..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="tarea-estado">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="en_proceso">En proceso</option>
+                        <option value="completada">Completada</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn-action" id="btn-cancelar-tarea">Cancelar</button>
+                    <button class="btn-action accent" id="btn-guardar-tarea">Guardar</button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 package com.gestor.service;
 
 import com.gestor.model.Tarea;
+import com.gestor.model.TareaDTO;
 import com.gestor.repository.TareaRepository;
 import com.gestor.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -24,18 +25,8 @@ public class TareaService {
 		return tareas.buscarTareasUsuario(idUsuario);
 	}
 
-	public Tarea getTareaById(int id) {
-		return tareas.buscarPorId(id);
-	}
-
-	public Tarea createTarea(Tarea tarea) {
-		// Generate id if not set
-		if (tarea.getId() == 0) {
-			int maxId = tareas.buscarTodos().stream().mapToInt(Tarea::getId).max().orElse(0);
-			tarea.setId(maxId + 1);
-		}
-		tareas.save(tarea);
-		return tarea;
+	public void crearTarea(TareaDTO tarea, int idUsuario) {
+		tareas.guardar(tarea, idUsuario);
 	}
 
 	public Tarea updateTarea(Tarea tarea) {
