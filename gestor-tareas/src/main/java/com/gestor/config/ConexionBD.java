@@ -7,8 +7,8 @@ public class ConexionBD {
     public ConexionBD() {}
     public static Connection getConnection(){
         String url = "jdbc:mysql://localhost:3307/Gestor";
-        String user = "appuser";
-        String password = "1234";
+        String user = "root";
+        String password = "";
         Connection conn = null;
 
         try {

@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('usuarioForm').addEventListener('submit', loginUsuario);
+    document.getElementById('login').addEventListener('click', loginUsuario);
 });
 
 async function loginUsuario() {
         event.preventDefault();
-        let nombre = document.getElementById('usuarioNombre').value;
+        let nombre = document.getElementById('inp-user').value;
         const response = await fetch("http://localhost:8080/api/usuarios/login", {
             method: "POST",
             headers: {
@@ -12,7 +12,7 @@ async function loginUsuario() {
             },
             body: JSON.stringify({
                 nombre: nombre,
-                passwd: document.getElementById('usuarioContrasena').value
+                passwd: document.getElementById('inp-pass').value
             })
         });
 
@@ -41,21 +41,21 @@ async function pedirID(nombre) {
     return data;
 }
 function mostrarTareas(tareas) {
-    document.getElementById('usuarios').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
+    document.getElementById('view-usuario').style.display = 'block';
+    document.getElementById('view-login').style.display = 'none';
     const contenedor = document.getElementById('contenedorTareas');
     contenedor.innerHTML = '';
 
     tareas.forEach(tarea => {
         const div = document.createElement('div');
-        div.classList.add('tarea');
+        div.classList.add('task-card');
         div.innerHTML = `
-            <div class="tarea-header">
-                <span class="tarea-id">#${tarea.id}</span>
-                <span class="tarea-estado ${tarea.estadoTarea.toLowerCase()}">${tarea.estadoTarea}</span>
+            <div class="task-header">
+                <span class="task-id">#${tarea.id}</span>
+                <span class="bagdge-${tarea.estadoTarea.toLowerCase()}">${tarea.estadoTarea}</span>
             </div>
-            <h3 class="tarea-nombre">${tarea.nombre}</h3>
-            <p class="tarea-desc">${tarea.descripcion}</p>
+            <h3 class="task-name">${tarea.nombre}</h3>
+            <p class="task-desc">${tarea.descripcion}</p>
         `;
         contenedor.appendChild(div);
     });

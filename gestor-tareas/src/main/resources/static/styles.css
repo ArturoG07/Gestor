@@ -1,140 +1,667 @@
-body {
-    font-family: Arial, sans-serif;
+/* ══════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════ */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
-header {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* ══════════════════════════════════════
+   VIEW SYSTEM  (solo .active se muestra)
+══════════════════════════════════════ */
+.view {
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.view.active {
+    display: flex;
+}
+
+/* ══════════════════════════════════════
+   HEADER
+══════════════════════════════════════ */
+.app-header {
     background-color: #333;
     color: white;
-    text-align: center;
-    padding: 1rem;
-}
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+    height: 56px;
+    padding: 0 1.5rem;
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
 }
 
-section {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 30%;
-}
-
-h2 {
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-input, textarea, select, button {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #28a745;
+.logo {
+    font-size: 16px;
+    font-weight: 600;
     color: white;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-username {
+    font-size: 13px;
+    color: #ccc;
+}
+
+.btn-logout {
+    font-size: 13px;
+    color: white;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 6px;
+    padding: 5px 12px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #218838;
+.btn-logout:hover {
+    background: rgba(255,255,255,0.1);
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #f9f9f9;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    border-radius: 4px;
+/* ══════════════════════════════════════
+   AVATAR
+══════════════════════════════════════ */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #4a90d9;
+    color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
 }
 
-li button {
-    background-color: #dc3545;
-    margin-left: 0.5rem;
+.avatar.avatar-lg {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
 }
 
-li button:hover {
-    background-color: #c82333;
+.avatar.avatar-admin {
+    background-color: #e6a817;
+    color: white;
 }
-#contenedorTareas {
+
+.avatar-sm {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #d9eaf7;
+    color: #1a5fa8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   LOGIN
+══════════════════════════════════════ */
+#view-login {
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+}
+
+.login-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-card h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+.role-label {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.role-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.role-btn {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.role-btn.selected {
+    background-color: #e8f0fb;
+    border-color: #4a90d9;
+    color: #1a5fa8;
+    font-weight: 600;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #111;
+}
+
+.login-error {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 16px;
+}
+
+/* ══════════════════════════════════════
+   FORMS (shared)
+══════════════════════════════════════ */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    color: #333;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 2px rgba(74,144,217,0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* ══════════════════════════════════════
+   PANEL LAYOUT
+══════════════════════════════════════ */
+.panel-wrap {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR (admin)
+══════════════════════════════════════ */
+.sidebar {
+    width: 220px;
+    background: white;
+    border-right: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    flex-shrink: 0;
+}
+
+.sidebar-section {
+    padding: 6px 1rem 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 1rem;
+    margin: 2px 8px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.1s;
+}
+
+.nav-item:hover {
+    background-color: #f4f4f4;
+}
+
+.nav-item.active {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+}
+
+/* ══════════════════════════════════════
+   PAGE HEADER
+══════════════════════════════════════ */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-action:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-action.accent {
+    background-color: #333;
+    color: white;
+    border-color: transparent;
+}
+
+.btn-action.accent:hover {
+    background-color: #111;
+}
+
+.btn-action.btn-danger {
+    color: #c0392b;
+    border-color: #e0a0a0;
+}
+
+.btn-action.btn-danger:hover {
+    background-color: #fdf0f0;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+    background: white;
+    color: #555;
+    cursor: pointer;
+}
+
+.btn-sm:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-sm.danger:hover {
+    background-color: #fdf0f0;
+    color: #c0392b;
+    border-color: #e0a0a0;
+}
+
+/* ══════════════════════════════════════
+   STATS GRID
+══════════════════════════════════════ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* ══════════════════════════════════════
+   TASK CARDS
+══════════════════════════════════════ */
+.tasks-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-    width: 100%;
+    gap: 12px;
 }
 
-.tarea {
+.task-card {
     background: white;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.tarea:hover {
+.task-card:hover {
     border-color: #bbb;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-.tarea-header {
+.task-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
 }
 
-.tarea-id {
-    font-size: 12px;
-    color: #999;
-    font-weight: 500;
+.task-id {
+    font-size: 11px;
+    color: #aaa;
 }
 
-.tarea-estado {
+.task-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.task-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ══════════════════════════════════════
+   BADGES
+══════════════════════════════════════ */
+.badge {
     font-size: 11px;
     font-weight: 600;
     padding: 3px 10px;
     border-radius: 6px;
 }
 
-.tarea-estado.pendiente   { background: #FAEEDA; color: #854F0B; }
-.tarea-estado.completada  { background: #EAF3DE; color: #3B6D11; }
-.tarea-estado.en_proceso { background: #E6F1FB; color: #185FA5; }
+.badge-pendiente  { background: #FAEEDA; color: #854F0B; }
+.badge-completada     { background: #EAF3DE; color: #3B6D11; }
+.badge-en_proceso { background: #E6F1FB; color: #185FA5; }
 
-.tarea-nombre {
-    margin: 0;
+/* ══════════════════════════════════════
+   TABS (usuario)
+══════════════════════════════════════ */
+.tab-bar {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #777;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s;
+}
+
+.tab:hover {
+    color: #333;
+}
+
+.tab.active {
+    color: #333;
+    border-bottom-color: #333;
+    font-weight: 600;
+}
+
+/* ══════════════════════════════════════
+   FILTER BAR
+══════════════════════════════════════ */
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+}
+
+.filter-bar select,
+.page-header select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    color: #333;
+}
+
+/* ══════════════════════════════════════
+   TABLES
+══════════════════════════════════════ */
+.table-wrapper {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #777;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fafafa;
+}
+
+.data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover td {
+    background-color: #fafafa;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ══════════════════════════════════════
+   PROFILE CARD
+══════════════════════════════════════ */
+.profile-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    max-width: 480px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-name {
     font-size: 15px;
     font-weight: 600;
     color: #333;
 }
 
-.tarea-desc {
-    margin: 0;
+.profile-role {
     font-size: 13px;
-    color: #666;
-    line-height: 1.5;
+    color: #777;
+}
+
+/* ══════════════════════════════════════
+   MODALS
+══════════════════════════════════════ */
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-backdrop.open {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.modal h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: #333;
+}
+
+.modal-body {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 1.25rem;
+}
+
+/* ══════════════════════════════════════
+   EMPTY STATE
+══════════════════════════════════════ */
+.empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #aaa;
+    font-size: 14px;
 }
