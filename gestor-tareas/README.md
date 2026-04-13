@@ -3,8 +3,8 @@ Este proyecto es un gestor de tareas desarrollado en Java. Permite a los usuario
 ## Autor
 - Nombre: Arturo Gregori
 - Correo electrónico: arturogregori836@gmail.com
-- GitHub: ArturoG07
-- LinkedIn: https://linkedin.com/in/arturo-gregori-ab7886368
+- GitHub: [ArturoG07](https://github.com/ArturoG07)
+- LinkedIn:[Arturo Gregori](https://linkedin.com/in/arturo-gregori-ab7886368)
 - Otros proyectos
   - [Calculadoras multifuncion](https://github.com/ArturoG07/Calculadora)
 - Licencia
@@ -34,5 +34,8 @@ Este proyecto está bajo la Licencia MIT.
 2. Abre el proyecto en tu IDE de Java
 3. Ejecuta la clase principal `Main.java`
 4. Ejecuta la base de datos en el puerto 3307 de tu localhost (puedes usar XAMPP)
-5. Entra en http:localhost:8080 para acceder a la interfaz gráfica
+5. Entra en http://localhost:8080 para acceder a la interfaz gráfica
 6. Interactúa con la interfaz gráfica para gestionar tus tareas
+## Características actuales
+- Inicio de sesion para usuarios registrados
+- Visualización de tareas pendientes y completadas desde la base de datos
