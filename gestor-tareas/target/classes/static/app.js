@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('login').addEventListener('click', loginUsuario);
 });
 
+
 async function loginUsuario() {
         event.preventDefault();
         let nombre = document.getElementById('inp-user').value;
@@ -24,6 +25,7 @@ async function loginUsuario() {
             console.log("Usuario o contraseña incorrectos");
         }
 }
+
 async function cargarTareas(id) {
     const response = await fetch(`http://localhost:8080/api/tareas/cargarTareas?id=${encodeURIComponent(id)}`, {
         method: "GET"
@@ -40,6 +42,7 @@ async function pedirID(nombre) {
     const data = await response.json();
     return data;
 }
+
 function mostrarTareas(tareas) {
     document.getElementById('view-usuario').style.display = 'block';
     document.getElementById('view-login').style.display = 'none';
@@ -52,7 +55,7 @@ function mostrarTareas(tareas) {
         div.innerHTML = `
             <div class="task-header">
                 <span class="task-id">#${tarea.id}</span>
-                <span class="bagdge-${tarea.estadoTarea.toLowerCase()}">${tarea.estadoTarea}</span>
+                <span class="badge-${tarea.estadoTarea.toLowerCase()}">${tarea.estadoTarea}</span>
             </div>
             <h3 class="task-name">${tarea.nombre}</h3>
             <p class="task-desc">${tarea.descripcion}</p>
