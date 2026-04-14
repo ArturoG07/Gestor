@@ -5,6 +5,7 @@ import com.gestor.model.dto.LoginDTO;
 import com.gestor.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,7 @@ public class AuthController {
 
 	@PostMapping("/logout")
 	public ResponseEntity<?> logout(HttpSession session) {
+		SecurityContextHolder.clearContext();
 		session.invalidate();
 		return ResponseEntity.ok("Sesión cerrada");
 	}

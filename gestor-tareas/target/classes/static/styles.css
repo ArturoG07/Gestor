@@ -434,10 +434,6 @@ body {
     padding: 1rem 1.25rem;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
-.tasks-grid::after {
-    content: "";
-    flex: auto;
-}
 
 .task-card:hover {
     border-color: #bbb;

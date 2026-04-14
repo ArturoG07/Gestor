@@ -15,8 +15,8 @@ async function cargarTareas() {
 }
 
 function mostrarTareas(tareas) {
-    document.getElementById('view-usuario').style.display = 'block';
-    document.getElementById('view-login').style.display = 'none';
+    document.getElementById('view-usuario').classList.add("active");
+    document.getElementById('view-login').classList.remove("active");
     const contenedor = document.getElementById('contenedorTareas');
     contenedor.innerHTML = '';
 
@@ -75,4 +75,10 @@ async function guardarTarea() {
         })
     });
     cargarTareas();
+}
+function cerrarSesion() {
+    document.getElementById('view-usuario').classList.remove("active");
+    document.getElementById('view-login').classList.add("active");
+    document.getElementById('inp-user').value = "";
+    document.getElementById('inp-pass').value = "";
 }

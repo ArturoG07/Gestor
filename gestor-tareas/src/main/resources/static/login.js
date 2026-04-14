@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('login').addEventListener('click', loginUsuario);
+    document.getElementById('logout').addEventListener('click', logout);
 });
 
 
@@ -34,4 +35,19 @@ async function loginUsuario(event) {
     } catch (error) {
         console.error("Error de red:", error);
     }
+}
+
+async function logout(event) {
+    event.preventDefault();
+    const res = await fetch("http://localhost:8080/api/auth/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include"
+    });
+    if (res.ok) {
+        cerrarSesion();
+    } else {
+        console.error("Error al cerrar sesión");
+    }
+    cerrarSesion();
 }

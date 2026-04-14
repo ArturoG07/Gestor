@@ -17,7 +17,7 @@ Este proyecto está bajo la Licencia MIT.
 - [x] Implementar la funcionalidad de cargar tareas desde la base de datos
 - [x] Implementar la funcionalidad de crear tareas y guardarlas en la base de datos
 - [x] Agregar autenticacion con contraseñas encriptadas y sesiones con tokens de usuario
-- [ ] Implementar la funcionalidad de cerrar sesion
+- [x] Implementar la funcionalidad de cerrar sesion
 - [ ] Implementar la funcionalidad de editar tareas y actualizar la base de datos
 - [ ] Implementar la funcionalidad de eliminar tareas y actualizar la base de datos
 - [ ] Implementar la funcionalidad de marcar tareas como completadas y actualizar la base de datos
