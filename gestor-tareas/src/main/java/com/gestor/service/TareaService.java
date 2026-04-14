@@ -1,44 +1,63 @@
 package com.gestor.service;
 
 import com.gestor.model.Tarea;
-import com.gestor.model.TareaDTO;
+import com.gestor.model.dto.TareaDTO;
 import com.gestor.repository.TareaRepository;
-import com.gestor.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio que gestiona la lógica de negocio de las tareas.
+ */
 @Service
 public class TareaService {
-	private TareaRepository tareas;
-	private UsuarioRepository usuarios;
 
-	public TareaService(TareaRepository tareas, UsuarioRepository usuarios) {
-		this.tareas = tareas;
-		this.usuarios = usuarios;
-	}
+	@Autowired
+	private TareaRepository tareaRepo;
 
-	public List<Tarea> getAllTareas() {
-		return tareas.buscarTodos();
-	}
+	/**
+	 * Devuelve todas las tareas de un usuario.
+	 * @param idUsuario ID del usuario propietario
+	 * @return lista de tareas del usuario
+	 */
 	public List<Tarea> getTareasUsuario(int idUsuario) {
-		return tareas.buscarTareasUsuario(idUsuario);
+		return tareaRepo.findByIdUsuario(idUsuario);
 	}
 
-	public void crearTarea(TareaDTO tarea, int idUsuario) {
-		tareas.guardar(tarea, idUsuario);
+	/**
+	 * Crea una nueva tarea a partir de un DTO y la guarda en la BD.
+	 * @param dto       datos de la tarea recibidos desde el frontend
+	 * @param idUsuario ID del usuario propietario
+	 */
+	public void crearTarea(TareaDTO dto, int idUsuario) {
+		Tarea tarea = new Tarea();
+		tarea.setNombre(dto.getTitulo());
+		tarea.setDescripcion(dto.getDescripcion());
+		tarea.setEstadoTarea(dto.getEstado());
+		tarea.setIdUsuario(idUsuario);
+		tareaRepo.save(tarea);
 	}
 
+	/**
+	 * Actualiza una tarea existente en la BD.
+	 * Si la tarea no existe, no hace nada.
+	 * @param tarea tarea con los datos actualizados
+	 * @return la tarea actualizada, o null si no existía
+	 */
 	public Tarea updateTarea(Tarea tarea) {
-		// Assuming update means replace if exists
-		if (tareas.existeId(tarea.getId())) {
-			tareas.eliminarPorId(tarea.getId());
-			tareas.save(tarea);
+		if (!tareaRepo.existsById(tarea.getId())) {
+			return null;
 		}
-		return tarea;
+		return tareaRepo.save(tarea);
 	}
 
+	/**
+	 * Elimina una tarea por su ID.
+	 * @param id ID de la tarea a eliminar
+	 */
 	public void deleteTarea(int id) {
-		tareas.eliminarPorId(id);
+		tareaRepo.deleteById(id);
 	}
 }

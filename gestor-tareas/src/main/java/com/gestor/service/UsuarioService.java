@@ -2,31 +2,45 @@ package com.gestor.service;
 
 import com.gestor.model.Usuario;
 import com.gestor.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
+/**
+ * Servicio que gestiona la lógica de negocio de los usuarios.
+ */
 @Service
 public class UsuarioService {
-	private UsuarioRepository usuarios;
 
-	public UsuarioService(UsuarioRepository usuarios) {
-		this.usuarios = usuarios;
+	@Autowired
+	private UsuarioRepository usuarioRepo;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	/**
+	 * Devuelve el ID de un usuario por su nombre.
+	 * @param nombre nombre del usuario
+	 * @return ID del usuario, o -1 si no existe
+	 */
+	public int getIdUsuario(String nombre) {
+		return usuarioRepo.findByNombre(nombre)
+				.map(Usuario::getId)
+				.orElse(-1);
 	}
 
-
-	public int getIdUsuario(String nombre){
-		return usuarios.buscarPorNombre(nombre).getId();
-	}
-
+	/**
+	 * Comprueba si las credenciales de login son correctas.
+	 * Compara la contraseña recibida con el hash guardado en la BD.
+	 * @param nombre   nombre del usuario
+	 * @param password contraseña en texto plano introducida por el usuario
+	 * @return true si las credenciales son correctas, false si no
+	 */
 	public boolean loginCorrecto(String nombre, String password) {
-		boolean loginCorrecto = false;
-		List<Usuario> usuariosList = usuarios.buscarTodos();
-		for (Usuario usuario : usuariosList) {
-			if (usuario.getNombre().equals(nombre) && usuario.getPasswd().equals(password)) {
-				loginCorrecto = true;
-			}
-		}
-		return loginCorrecto;
+		Optional<Usuario> usuario = usuarioRepo.findByNombre(nombre);
+		return usuario.isPresent() &&
+				passwordEncoder.matches(password, usuario.get().getPasswd());
 	}
 }

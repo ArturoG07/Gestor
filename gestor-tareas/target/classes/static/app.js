@@ -1,46 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('login').addEventListener('click', loginUsuario);
-});
-
-
-async function loginUsuario() {
-        event.preventDefault();
-        let nombre = document.getElementById('inp-user').value;
-        const response = await fetch("http://localhost:8080/api/usuarios/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nombre: nombre,
-                passwd: document.getElementById('inp-pass').value
-            })
-        });
-
-        const data = await response.json();
-        if (data === true) {
-            let id = await pedirID(nombre);
-            cargarTareas(id);
-        } else {
-            console.log("Usuario o contraseña incorrectos");
-        }
-}
-
-async function cargarTareas(id) {
-    const response = await fetch(`http://localhost:8080/api/tareas/cargarTareas?id=${encodeURIComponent(id)}`, {
-        method: "GET"
-    })
-    const data = await response.json();
-    mostrarTareas(data);
-}
-
-async function pedirID(nombre) {
-    const response = await fetch(`http://localhost:8080/api/usuarios/pedirId?nombre=${encodeURIComponent(nombre)}`, {
-        method: "GET"
+async function cargarTareas() {
+    const response = await fetch("http://localhost:8080/api/tareas/cargarTareas", {
+        method: "GET",
+        credentials: "include"
     });
 
+    if (!response.ok) {
+        const error = await response.text();
+        console.log("Error:", error);
+        return;
+    }
+
     const data = await response.json();
-    return data;
+    mostrarTareas(data);
 }
 
 function mostrarTareas(tareas) {
@@ -96,10 +67,12 @@ async function guardarTarea() {
         headers: {
             "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({
             titulo: titulo,
             descripcion: desc,
             estado: estado,
         })
     });
+    cargarTareas();
 }

@@ -1,30 +1,48 @@
 package com.gestor.model;
 
+import javax.persistence.*;
+
 /**
  * Clase que representa a un usuario del sistema.
  * Cada usuario tiene un identificador único, un nombre y una contraseña.
  * <p>
- * Esta clase incluye constructor, getters y setters para manipular los atributos.
+ * La contraseña se almacena hasheada con BCrypt, nunca en texto plano.
  * </p>
  */
+@Entity
+@Table(name = "Usuarios")
 public class Usuario {
 
-	/** Identificador único del usuario */
+	/** Identificador único del usuario, generado automáticamente por la BD */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	/** Nombre del usuario */
+	/**
+	 * Nombre de usuario, usado para el login.
+	 * Debe ser único en el sistema.
+	 */
+	@Column(name = "Nombre", nullable = false, unique = true)
 	private String nombre;
 
-	/** Contraseña del usuario */
+	/**
+	 * Contraseña del usuario almacenada como hash BCrypt.
+	 * Nunca se guarda ni devuelve en texto plano.
+	 */
+	@Column(name = "passwd", nullable = false)
 	private String passwd;
 
 	/**
+	 * Constructor vacío requerido por JPA.
+	 */
+	public Usuario() {}
+
+	/**
 	 * Constructor de la clase Usuario.
-	 * Permite crear un usuario con id, nombre y contraseña.
 	 *
-	 * @param id Identificador único del usuario
+	 * @param id     Identificador único del usuario
 	 * @param nombre Nombre del usuario
-	 * @param passwd Contraseña del usuario
+	 * @param passwd Contraseña ya hasheada del usuario
 	 */
 	public Usuario(int id, String nombre, String passwd) {
 		this.id = id;
@@ -32,57 +50,21 @@ public class Usuario {
 		this.passwd = passwd;
 	}
 
-	/**
-	 * Devuelve el identificador del usuario.
-	 *
-	 * @return int ID del usuario
-	 */
-	public int getId() {
-		return id;
-	}
+	/** @return ID del usuario */
+	public int getId() { return id; }
 
-	/**
-	 * Establece un nuevo identificador para el usuario.
-	 *
-	 * @param id Nuevo ID a asignar
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	/** @param id Nuevo ID a asignar */
+	public void setId(int id) { this.id = id; }
 
-	/**
-	 * Devuelve el nombre del usuario.
-	 *
-	 * @return String Nombre del usuario
-	 */
-	public String getNombre() {
-		return nombre;
-	}
+	/** @return Nombre del usuario */
+	public String getNombre() { return nombre; }
 
-	/**
-	 * Establece un nuevo nombre para el usuario.
-	 *
-	 * @param nombre Nuevo nombre a asignar
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	/** @param nombre Nuevo nombre a asignar */
+	public void setNombre(String nombre) { this.nombre = nombre; }
 
-	/**
-	 * Devuelve la contraseña del usuario.
-	 *
-	 * @return String Contraseña del usuario
-	 */
-	public String getPasswd() {
-		return passwd;
-	}
+	/** @return Contraseña hasheada del usuario */
+	public String getPasswd() { return passwd; }
 
-	/**
-	 * Establece una nueva contraseña para el usuario.
-	 *
-	 * @param passwd Nueva contraseña a asignar
-	 */
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
+	/** @param passwd Nueva contraseña hasheada a asignar */
+	public void setPasswd(String passwd) { this.passwd = passwd; }
 }

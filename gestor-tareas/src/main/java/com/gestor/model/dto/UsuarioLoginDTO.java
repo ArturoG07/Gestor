@@ -1,4 +1,4 @@
-package com.gestor.model;
+package com.gestor.model.dto;
 
 public class UsuarioLoginDTO {
 	private String nombre;

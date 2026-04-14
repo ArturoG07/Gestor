@@ -1,6 +1,6 @@
 package com.gestor.controller;
 
-import com.gestor.model.UsuarioLoginDTO;
+import com.gestor.model.dto.UsuarioLoginDTO;
 import com.gestor.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
