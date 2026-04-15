@@ -18,3 +18,6 @@ document.getElementById("close-detail").addEventListener("click", () => {
 document.getElementById("btn-marcar-completada").addEventListener("click", completarTarea);
 document.getElementById("edit-task").addEventListener("click", motrarEditor);
 document.getElementById("edit-tarea").addEventListener("click", editarTarea);
+document.getElementById('user-filter-estado').addEventListener('change', () => {
+    cargarTareas();
+});

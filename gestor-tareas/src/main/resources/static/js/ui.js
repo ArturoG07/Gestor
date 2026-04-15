@@ -73,3 +73,8 @@ function actualizarStats(tareas) {
     document.getElementById('u-stat-progress').textContent = enProceso;
     document.getElementById('u-stat-done').textContent = completadas;
 }
+function filtrarTareas(tareas) {
+    const filtro = document.getElementById('user-filter-estado').value;
+    if (filtro === 'todos') return tareas;
+    return tareas.filter(t => t.estadoTarea.toLowerCase() === filtro);
+}

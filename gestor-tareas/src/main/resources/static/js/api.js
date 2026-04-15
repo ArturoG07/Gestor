@@ -11,10 +11,10 @@ async function cargarTareas() {
     }
 
     const data = await response.json();
-    await mostrarTareas(data);
     document.querySelectorAll(".task-card").forEach((element) => {
         element.addEventListener("click", detallesTarea);
-    })
+    });
+    mostrarTareas(filtrarTareas(data));
 }
 async function guardarTarea() {
     let titulo = document.getElementById("tarea-titulo").value;
@@ -100,7 +100,7 @@ async function editarTarea() {
         })
     })
     if (response.ok) {
-        cargarTareas();
+        mostrarTareas(cargarTareas());
         document.getElementById('modal-tarea-detail').classList.remove('open');
         document.getElementById('modal-edit-tarea').classList.remove('open');
     } else {
