@@ -19,6 +19,7 @@ function mostrarTareas(tareas) {
         `;
         contenedor.appendChild(div);
     });
+    actualizarStats(tareas);
 }
 function camposTareaCorrectos() {
     let titulo = document.getElementById("tarea-titulo").value;
@@ -61,3 +62,14 @@ document.getElementById("btn-cancelar-edit").addEventListener("click", () => {
 document.getElementById("borrar-tarea").addEventListener("click", () => {
     borrarTarea();
 })
+function actualizarStats(tareas) {
+    const total = tareas.length;
+    const pendientes = tareas.filter(t => t.estadoTarea === 'PENDIENTE').length;
+    const enProceso = tareas.filter(t => t.estadoTarea === 'EN_PROCESO').length;
+    const completadas = tareas.filter(t => t.estadoTarea === 'COMPLETADA').length;
+
+    document.getElementById('u-stat-total').textContent = total;
+    document.getElementById('u-stat-pending').textContent = pendientes;
+    document.getElementById('u-stat-progress').textContent = enProceso;
+    document.getElementById('u-stat-done').textContent = completadas;
+}

@@ -101,6 +101,8 @@ async function editarTarea() {
     })
     if (response.ok) {
         cargarTareas();
+        document.getElementById('modal-tarea-detail').classList.remove('open');
+        document.getElementById('modal-edit-tarea').classList.remove('open');
     } else {
         console.log("Error al actualizar la tarea");
     }
