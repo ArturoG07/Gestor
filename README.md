@@ -21,6 +21,7 @@ Este proyecto está bajo la Licencia MIT.
 - [x] Implementar la funcionalidad de marcar tareas como completadas y actualizar la base de datos
 - [x] Implementar la funcionalidad de editar tareas y actualizar la base de datos
 - [x] Implementar la funcionalidad de eliminar tareas y actualizar la base de datos
+- [x] Implementar la funcionalidad de filtrar tareas por estado (pendiente/completada/en_proceso)
 - [ ] Implementar el panel de administrador con funciones especiales
 - [ ] Agregar la funcionalidad de asignar fechas de vencimiento a las tareas
 - [ ] Implementar la funcionalidad de categorizar tareas por etiquetas
@@ -40,3 +41,8 @@ Este proyecto está bajo la Licencia MIT.
 - Inicio de sesion para usuarios registrados
 - Visualización de tareas pendientes y completadas desde la base de datos
 - Cierre de sesion para usuarios autenticados
+- Creación de tareas y guardado en la base de datos
+- Marcado de tareas como completadas y actualización en la base de datos
+- Edición de tareas y actualización en la base de datos
+- Eliminación de tareas y actualización en la base de datos
+- Filtrado de tareas por estado
