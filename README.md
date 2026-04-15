@@ -19,8 +19,8 @@ Este proyecto está bajo la Licencia MIT.
 - [x] Agregar autenticacion con contraseñas encriptadas y sesiones con tokens de usuario
 - [x] Implementar la funcionalidad de cerrar sesion
 - [x] Implementar la funcionalidad de marcar tareas como completadas y actualizar la base de datos
-- [ ] Implementar la funcionalidad de editar tareas y actualizar la base de datos
-- [ ] Implementar la funcionalidad de eliminar tareas y actualizar la base de datos
+- [x] Implementar la funcionalidad de editar tareas y actualizar la base de datos
+- [x] Implementar la funcionalidad de eliminar tareas y actualizar la base de datos
 - [ ] Implementar el panel de administrador con funciones especiales
 - [ ] Agregar la funcionalidad de asignar fechas de vencimiento a las tareas
 - [ ] Implementar la funcionalidad de categorizar tareas por etiquetas
