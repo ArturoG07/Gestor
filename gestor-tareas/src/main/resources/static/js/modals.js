@@ -8,8 +8,6 @@ document.getElementById("btn-guardar-tarea").addEventListener("click", () => {
     if (camposTareaCorrectos()) {
         document.getElementById("modal-add-tarea").classList.remove("open");
         guardarTarea();
-    } else {
-
     }
 });
 document.getElementById("close-detail").addEventListener("click", () => {

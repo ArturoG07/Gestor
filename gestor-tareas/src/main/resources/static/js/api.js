@@ -100,7 +100,7 @@ async function editarTarea() {
         })
     })
     if (response.ok) {
-        mostrarTareas(cargarTareas());
+        cargarTareas();
         document.getElementById('modal-tarea-detail').classList.remove('open');
         document.getElementById('modal-edit-tarea').classList.remove('open');
     } else {

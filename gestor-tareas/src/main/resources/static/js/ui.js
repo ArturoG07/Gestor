@@ -17,6 +17,7 @@ function mostrarTareas(tareas) {
             <h3 class="task-name">${tarea.nombre}</h3>
             <p class="task-desc">${tarea.descripcion}</p>
         `;
+        div.addEventListener("click", detallesTarea);
         contenedor.appendChild(div);
     });
     actualizarStats(tareas);
