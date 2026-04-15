@@ -51,3 +51,9 @@ async function logout(event) {
     }
     cerrarSesion();
 }
+function cerrarSesion() {
+    document.getElementById('view-usuario').classList.remove("active");
+    document.getElementById('view-login').classList.add("active");
+    document.getElementById('inp-user').value = "";
+    document.getElementById('inp-pass').value = "";
+}
