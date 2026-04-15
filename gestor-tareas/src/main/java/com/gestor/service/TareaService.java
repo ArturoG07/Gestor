@@ -1,6 +1,7 @@
 package com.gestor.service;
 
 import com.gestor.model.Tarea;
+import com.gestor.model.dto.RequestUpdateTareaDTO;
 import com.gestor.model.dto.TareaDTO;
 import com.gestor.repository.TareaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class TareaService {
 
 	/**
 	 * Devuelve todas las tareas de un usuario.
+	 *
 	 * @param idUsuario ID del usuario propietario
 	 * @return lista de tareas del usuario
 	 */
@@ -28,6 +30,7 @@ public class TareaService {
 
 	/**
 	 * Crea una nueva tarea a partir de un DTO y la guarda en la BD.
+	 *
 	 * @param dto       datos de la tarea recibidos desde el frontend
 	 * @param idUsuario ID del usuario propietario
 	 */
@@ -43,6 +46,7 @@ public class TareaService {
 	/**
 	 * Actualiza una tarea existente en la BD.
 	 * Si la tarea no existe, no hace nada.
+	 *
 	 * @param tarea tarea con los datos actualizados
 	 * @return la tarea actualizada, o null si no existía
 	 */
@@ -55,6 +59,7 @@ public class TareaService {
 
 	/**
 	 * Elimina una tarea por su ID.
+	 *
 	 * @param id ID de la tarea a eliminar
 	 */
 	public void deleteTarea(int id) {
@@ -71,12 +76,26 @@ public class TareaService {
 			return false;
 		}
 	}
+
 	public boolean eliminarTarea(int idTarea, int idUsuario) {
 		Tarea tarea = tareaRepo.findById(idTarea).orElse(null);
 		if (tarea != null && tarea.getIdUsuario() == idUsuario) {
 			tareaRepo.delete(tarea);
 			return true;
-		}else {
+		} else {
+			return false;
+		}
+	}
+
+	public boolean editarTarea(RequestUpdateTareaDTO tarea, int id_usuario) {
+		Tarea tareaExistente = tareaRepo.findById(tarea.getId_tarea()).orElse(null);
+		if (tareaExistente != null && tareaExistente.getIdUsuario() == id_usuario) {
+			tareaExistente.setNombre(tarea.getTitulo());
+			tareaExistente.setDescripcion(tarea.getDescripcion());
+			tareaExistente.setEstadoTarea(tarea.getEstado());
+			tareaRepo.save(tareaExistente);
+			return true;
+		} else {
 			return false;
 		}
 	}

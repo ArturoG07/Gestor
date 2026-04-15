@@ -1,0 +1,25 @@
+/* ══════════════════════════════════════
+   PROFILE CARD
+══════════════════════════════════════ */
+.profile-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    max-width: 480px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}

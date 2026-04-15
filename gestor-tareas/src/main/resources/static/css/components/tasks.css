@@ -1,0 +1,58 @@
+
+/* ══════════════════════════════════════
+   TASK CARDS
+══════════════════════════════════════ */
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+
+.task-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    min-height: 99.5px;
+}
+
+.task-card:hover {
+    border-color: #bbb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.task-id {
+    font-size: 11px;
+    color: #aaa;
+}
+
+.task-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.task-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}

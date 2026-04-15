@@ -1,0 +1,12 @@
+/* ══════════════════════════════════════
+   VIEW SYSTEM  (solo .active se muestra)
+══════════════════════════════════════ */
+.view {
+    display: none;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.view.active {
+    display: flex;
+}

@@ -1,0 +1,59 @@
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-action:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-action.accent {
+    background-color: #333;
+    color: white;
+    border-color: transparent;
+}
+
+.btn-action.accent:hover {
+    background-color: #111;
+}
+
+.btn-action.danger {
+    color: #c0392b;
+    border-color: #e0a0a0;
+}
+
+.btn-action.danger:hover {
+    background-color: #fdf0f0;
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+    background: white;
+    color: #555;
+    cursor: pointer;
+}
+
+.btn-sm:hover {
+    background-color: #f4f4f4;
+}
+
+.btn-sm.danger:hover {
+    background-color: #fdf0f0;
+    color: #c0392b;
+    border-color: #e0a0a0;
+}

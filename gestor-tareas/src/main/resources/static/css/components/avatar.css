@@ -1,0 +1,41 @@
+/* ══════════════════════════════════════
+   AVATAR
+══════════════════════════════════════ */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #4a90d9;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.avatar.avatar-lg {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+}
+
+.avatar.avatar-admin {
+    background-color: #e6a817;
+    color: white;
+}
+
+.avatar-sm {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #d9eaf7;
+    color: #1a5fa8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    flex-shrink: 0;
+}

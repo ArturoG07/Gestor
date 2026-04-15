@@ -1,0 +1,15 @@
+/* ══════════════════════════════════════
+   PANEL LAYOUT
+══════════════════════════════════════ */
+.panel-wrap {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}

@@ -1,0 +1,13 @@
+/* ══════════════════════════════════════
+   BADGES
+══════════════════════════════════════ */
+.badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.badge-pendiente  { background: #FAEEDA; color: #854F0B; }
+.badge-completada     { background: #EAF3DE; color: #3B6D11; }
+.badge-en_proceso { background: #E6F1FB; color: #185FA5; }

@@ -1,0 +1,32 @@
+/* ===================== */
+/* COMPONENTS            */
+/* ===================== */
+@import './components/avatar.css';
+@import './components/badges.css';
+@import './components/buttons.css';
+@import './components/filter.css';
+@import './components/forms.css';
+@import './components/modals.css';
+@import './components/stats.css';
+@import './components/tables.css';
+@import './components/tabs.css';
+@import './components/tasks.css';
+
+/* ===================== */
+/* LAYOUT                */
+/* ===================== */
+@import './layout/header.css';
+@import './layout/sidebar.css';
+@import './layout/panel.css';
+
+/* ===================== */
+/* PAGES                 */
+/* ===================== */
+@import './pages/login.css';
+@import './pages/profile.css';
+@import './pages/view.css';
+/* ===================== */
+/* BASE                  */
+/* ===================== */
+@import './base/empty.css';
+@import './base/reset.css';

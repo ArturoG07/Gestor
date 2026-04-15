@@ -1,0 +1,19 @@
+
+/* ══════════════════════════════════════
+   FILTER BAR
+══════════════════════════════════════ */
+.filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+}
+
+.filter-bar select,
+.page-header select {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    background: white;
+    color: #333;
+}
