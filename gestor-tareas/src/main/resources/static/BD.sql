@@ -1,8 +1,8 @@
+CREATE DATABASE IF NOT EXISTS Gestor;
+USE Gestor;
 CREATE USER 'appuser'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON Gestor.* TO 'appuser'@'localhost';
 FLUSH PRIVILEGES;
-CREATE DATABASE IF NOT EXISTS Gestor;
-USE Gestor;
 CREATE TABLE Usuarios(
                          ID INT AUTO_INCREMENT PRIMARY KEY,
                          Nombre VARCHAR(50) NOT NULL,
