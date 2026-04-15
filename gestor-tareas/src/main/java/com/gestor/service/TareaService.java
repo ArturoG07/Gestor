@@ -60,4 +60,15 @@ public class TareaService {
 	public void deleteTarea(int id) {
 		tareaRepo.deleteById(id);
 	}
+
+	public boolean completarTarea(int idTarea, int idUsuario) {
+		Tarea tarea = tareaRepo.findById(idTarea).orElse(null);
+		if (tarea != null && tarea.getIdUsuario() == idUsuario) {
+			tarea.setEstadoTarea(Tarea.Estado.COMPLETADA);
+			tareaRepo.save(tarea);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

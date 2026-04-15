@@ -64,14 +64,15 @@
             <div id="tab-mis-tareas">
                 <div class="page-header">
                     <span class="page-title">Mis tareas</span>
-                    <div id="contenedorTareas"></div>
-                    <button id="añadirTarea" class="btn-action accent">Añadir tarea</button>
-                    <select id="user-filter-estado">
-                        <option value="">Todos los estados</option>
-                        <option value="pendiente">Pendiente</option>
-                        <option value="en_proceso">En proceso</option>
-                        <option value="completada">Completada</option>
-                    </select>
+                    <div class="page-actions">
+                        <button id="añadirTarea" class="btn-action accent">Añadir tarea</button>
+                        <select id="user-filter-estado">
+                            <option value="">Todos los estados</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en_proceso">En proceso</option>
+                            <option value="completada">Completada</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="stats-grid">
@@ -110,9 +111,14 @@
         <div class="modal-backdrop" id="modal-tarea-detail">
             <div class="modal">
                 <h3 id="modal-tarea-title">Detalle de tarea</h3>
-                <div class="modal-body" id="modal-tarea-body"></div>
+                <div class="modal-body" id="modal-tarea-body">
+                    <p id="task-id"></p>
+                    <p id="task-title"></p>
+                    <p id="task-desc"></p>
+                    <p id="task-state"></p>
+                </div>
                 <div class="modal-actions">
-                    <button class="btn-action">Cerrar</button>
+                    <button class="btn-action" id="close-detail">Cerrar</button>
                     <button class="btn-action accent" id="btn-marcar-completada">Marcar como completada</button>
                 </div>
             </div>
