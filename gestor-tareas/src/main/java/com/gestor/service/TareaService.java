@@ -71,4 +71,13 @@ public class TareaService {
 			return false;
 		}
 	}
+	public boolean eliminarTarea(int idTarea, int idUsuario) {
+		Tarea tarea = tareaRepo.findById(idTarea).orElse(null);
+		if (tarea != null && tarea.getIdUsuario() == idUsuario) {
+			tareaRepo.delete(tarea);
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

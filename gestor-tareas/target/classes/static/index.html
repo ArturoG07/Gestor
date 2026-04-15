@@ -118,8 +118,41 @@
                     <p id="task-state"></p>
                 </div>
                 <div class="modal-actions">
+                    <button class="btn-action" id="edit-task">Editar Tarea</button>
                     <button class="btn-action" id="close-detail">Cerrar</button>
                     <button class="btn-action accent" id="btn-marcar-completada">Marcar como completada</button>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL: Editar tarea (usuario) -->
+        <div class="modal-backdrop" id="modal-edit-tarea">
+            <div class="modal">
+                <h3 id="modal-edit-tarea-title">Editar tarea</h3>
+                <div class="modal-body" id="modal-edit-tarea-body">
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="tarea-tituloEdit" placeholder="Ej: Estudiar Java">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea id="tarea-descEdit" rows="3" placeholder="Describe la tarea..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="tarea-estadoEdit">
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en_proceso">En proceso</option>
+                            <option value="completada">Completada</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-action danger" id="borrar-tarea">Borrar Tarea</button>
+                        <button class="btn-action" id="btn-cancelar-edit">Cancelar</button>
+                        <button class="btn-action accent" id="edit-tarea">Guardar</button>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -366,12 +366,12 @@ body {
     background-color: #111;
 }
 
-.btn-action.btn-danger {
+.btn-action.danger {
     color: #c0392b;
     border-color: #e0a0a0;
 }
 
-.btn-action.btn-danger:hover {
+.btn-action.danger:hover {
     background-color: #fdf0f0;
 }
 

@@ -132,3 +132,33 @@ async function completarTarea() {
     }
     cargarTareas();
 }
+document.getElementById("edit-task").addEventListener("click", motrarEditor);
+function motrarEditor() {
+    document.getElementById("modal-edit-tarea").classList.add("open")
+}
+document.getElementById("btn-cancelar-edit").addEventListener("click", () => {
+    document.getElementById("modal-edit-tarea").classList.remove("open");
+})
+document.getElementById("borrar-tarea").addEventListener("click", () => {
+    borrarTarea();
+})
+async function borrarTarea() {
+    const id = getIdTareaActual();
+    if (!id) return;
+    const card = document.querySelector(`.task-card[data-id="${id}"]`);
+    const response = await fetch(`http://localhost:8080/api/tareas/eliminar`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id_tarea: parseInt(id) })
+    });
+    if (!response.ok) {
+        console.log("Error al actualizar la tarea");
+        return;
+    }
+    cargarTareas();
+    document.getElementById('modal-tarea-detail').classList.remove('open');
+    document.getElementById('modal-edit-tarea').classList.remove('open');
+}

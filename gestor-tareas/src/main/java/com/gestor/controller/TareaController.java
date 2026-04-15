@@ -1,6 +1,5 @@
 package com.gestor.controller;
 
-import com.gestor.model.Tarea;
 import com.gestor.model.dto.CompletarRequestDTO;
 import com.gestor.model.dto.TareaDTO;
 import com.gestor.service.TareaService;
@@ -8,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tareas")
@@ -44,5 +41,15 @@ public class TareaController {
 	public void crearTarea(@RequestBody TareaDTO tarea, HttpSession session) {
 		int id = (Integer) session.getAttribute("usuarioId");
 		tareaService.crearTarea(tarea, id);
+	}
+	@DeleteMapping("eliminar")
+	public ResponseEntity<?> eliminarTareas(@RequestBody CompletarRequestDTO request, HttpSession session) {
+		int usuarioId = (Integer) session.getAttribute("usuarioId");
+		boolean resultado = tareaService.eliminarTarea(request.getId_tarea(), usuarioId);
+		if (resultado) {
+			return ResponseEntity.ok("Tarea eliminar");
+		} else {
+			return ResponseEntity.status(403).body("No autorizado para eliminar esta tarea");
+		}
 	}
 }
