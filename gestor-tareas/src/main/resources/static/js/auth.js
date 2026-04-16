@@ -23,6 +23,7 @@ async function loginUsuario(event) {
         if (response.ok) {
             const data = await response.json();
             cargarTareas();
+            cargarDataUsuario();
 
         } else if (response.status === 401) {
             const errorText = await response.text();

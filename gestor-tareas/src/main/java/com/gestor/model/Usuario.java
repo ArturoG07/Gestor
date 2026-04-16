@@ -31,7 +31,22 @@ public class Usuario {
 	 */
 	@Column(name = "passwd", nullable = false)
 	private String passwd;
+	/**
+	 * Correo electrónico del usuario.
+	 */
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
 
+	/**
+	 *
+	 */
+	@Column(name = "rol", nullable = false)
+	private String rol;
+	/**
+	 * Nombre completo del usuario no unico
+	 */
+	@Column(name="nombre_completo",nullable=false)
+	private String nombre_completo;
 	/**
 	 * Constructor vacío requerido por JPA.
 	 */
@@ -43,11 +58,17 @@ public class Usuario {
 	 * @param id     Identificador único del usuario
 	 * @param nombre Nombre del usuario
 	 * @param passwd Contraseña ya hasheada del usuario
+	 * @param email  Correo electrónico del usuario
+	 * @param rol    Rol del usuario (e.g., "admin", "user")
+	 * @param nombre_completo Nombre completo del usuario tiene formato
 	 */
-	public Usuario(int id, String nombre, String passwd) {
+	public Usuario(int id, String nombre, String passwd, String email, String rol, String nombre_completo) {
 		this.id = id;
 		this.nombre = nombre;
 		this.passwd = passwd;
+		this.email = email;
+		this.rol = rol;
+		this.nombre_completo = nombre_completo;
 	}
 
 	/** @return ID del usuario */
@@ -67,4 +88,15 @@ public class Usuario {
 
 	/** @param passwd Nueva contraseña hasheada a asignar */
 	public void setPasswd(String passwd) { this.passwd = passwd; }
+	/** @return Email del usuario*/
+	public String getEmail() { return email; }
+
+	/**@param email Nuevo email del usuario*/
+	public void setEmail(String email) { this.email = email; }
+	/**@return Rol del usuario*/
+	public String getRol() { return rol; }
+	/**@param rol Nuevo rol del usuario*/
+	public void setRol(String rol) { this.rol = rol; }
+	public String getNombre_completo() { return nombre_completo; }
+	public void setNombre_completo(String nombre_completo) { this.nombre_completo = nombre_completo; }
 }

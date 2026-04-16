@@ -19,3 +19,25 @@ document.getElementById("edit-tarea").addEventListener("click", editarTarea);
 document.getElementById('user-filter-estado').addEventListener('change', () => {
     cargarTareas();
 });
+    const tabTarea = document.getElementById("tab-tarea");
+    const tabPerf = document.getElementById("tab-perf");
+    const contenidoTareas = document.getElementById("tab-mis-tareas");
+    const contenidoPerfil = document.getElementById("tab-perfil");
+
+    tabTarea.addEventListener("click", () => {
+    contenidoTareas.style.display = "block";
+    contenidoPerfil.style.display = "none";
+
+    tabTarea.classList.add("active");
+    tabPerf.classList.remove("active");
+});
+    tabPerf.addEventListener("click", () => {
+    contenidoTareas.style.display = "none";
+    contenidoPerfil.style.display = "block";
+
+    tabPerf.classList.add("active");
+    tabTarea.classList.remove("active");
+});
+    document.getElementById("btn-save-perfil").addEventListener("click", () => {
+        modificarPerfil();
+    })

@@ -107,3 +107,18 @@ async function editarTarea() {
         console.log("Error al actualizar la tarea");
     }
 }
+async function cargarDataUsuario() {
+    const response = await fetch("http://localhost:8080/api/usuarios/data", {
+        method: "GET",
+        credentials: "include"
+    });
+    const data = await response.json();
+    const usuario = data.nombre;
+    const email = data.email;
+    const nombre = data.nombre_completo;
+    const rol = data.rol;
+    document.getElementById('perfil-usuario').textContent = usuario;
+    document.getElementById('perfil-email').value = email;
+    document.getElementById('perfil-nombre').value = nombre;
+    document.getElementById('perfil-rol').textContent= `Rol: ${rol}`;
+}

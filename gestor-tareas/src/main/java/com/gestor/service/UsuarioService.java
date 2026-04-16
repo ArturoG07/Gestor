@@ -43,4 +43,8 @@ public class UsuarioService {
 		return usuario.isPresent() &&
 				passwordEncoder.matches(password, usuario.get().getPasswd());
 	}
+	public Usuario getDataUsuario(int id) {
+		Usuario usuario = usuarioRepo.findById(id);
+		return usuario;
+	}
 }

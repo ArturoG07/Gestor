@@ -19,4 +19,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	 * @return Optional con el usuario si existe, vacío si no
 	 */
 	Optional<Usuario> findByNombre(String nombre);
+	Usuario findById(int id);
 }
