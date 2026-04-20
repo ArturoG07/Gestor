@@ -57,3 +57,8 @@
     color: #c0392b;
     border-color: #e0a0a0;
 }
+#btn-save-perfil:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(30%);
+}

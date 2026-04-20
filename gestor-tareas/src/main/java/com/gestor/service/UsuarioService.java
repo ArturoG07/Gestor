@@ -44,7 +44,28 @@ public class UsuarioService {
 				passwordEncoder.matches(password, usuario.get().getPasswd());
 	}
 	public Usuario getDataUsuario(int id) {
-		Usuario usuario = usuarioRepo.findById(id);
+		Usuario usuario = usuarioRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 		return usuario;
+	}
+	public void actualizarNombre(String nombre, int id) {
+		Usuario usuario = usuarioRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+		usuario.setNombre_completo(nombre);
+		usuarioRepo.save(usuario);
+	}
+
+	public void actualizarPasswd(String password, int id) {
+		Usuario usuario = usuarioRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+		usuario.setPasswd(passwordEncoder.encode(password));
+		usuarioRepo.save(usuario);
+	}
+
+	public void actualizarEmail(String email, int id) {
+		Usuario usuario = usuarioRepo.findById(id)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+		usuario.setEmail(email);
+		usuarioRepo.save(usuario);
 	}
 }

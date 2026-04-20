@@ -23,7 +23,7 @@ Este proyecto está bajo la Licencia MIT.
 - [x] Implementar la funcionalidad de eliminar tareas y actualizar la base de datos
 - [x] Implementar la funcionalidad de filtrar tareas por estado (pendiente/completada/en_proceso)
 - [x] Visualizacion de perfil
-- [ ] Modificacion de perfil
+- [x] Modificacion de perfil
 - [ ] Implementar el panel de administrador con funciones especiales
 - [ ] Agregar la funcionalidad de asignar fechas de vencimiento a las tareas
 - [ ] Implementar la funcionalidad de categorizar tareas por etiquetas

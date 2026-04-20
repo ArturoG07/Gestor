@@ -39,5 +39,5 @@ document.getElementById('user-filter-estado').addEventListener('change', () => {
     tabTarea.classList.remove("active");
 });
     document.getElementById("btn-save-perfil").addEventListener("click", () => {
-        modificarPerfil();
+        actualizarDatos();
     })
