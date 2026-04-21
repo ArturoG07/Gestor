@@ -28,6 +28,7 @@ public class AuthController {
 
 		String nombre = loginDTO.getNombre();
 		String password = loginDTO.getPassword();
+		String rol = loginDTO.getRol();
 
 		Usuario usuario = usuarioRepo.findByNombre(nombre).orElse(null);
 
@@ -38,6 +39,16 @@ public class AuthController {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("usuarioId", usuario.getId());
 		session.setAttribute("username", usuario.getNombre());
+
+		if (!rol.matches(usuario.getRol())) {
+			if (usuario.getRol().equals("ADMIN")) {
+				Map<String, String> respuesta = new HashMap<>();
+				respuesta.put("mensaje", "Login correcto como USUARIO desde ADMIN");
+				return ResponseEntity.ok(respuesta);
+			} else {
+				return ResponseEntity.status(401).body("Usuario comun autenticandose como admin");
+			}
+		}
 
 		Map<String, String> respuesta = new HashMap<>();
 		respuesta.put("mensaje", "Login correcto");

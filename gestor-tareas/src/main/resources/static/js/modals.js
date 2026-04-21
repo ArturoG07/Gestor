@@ -41,3 +41,7 @@ document.getElementById('user-filter-estado').addEventListener('change', () => {
     document.getElementById("btn-save-perfil").addEventListener("click", () => {
         actualizarDatos();
     })
+document.getElementById("role-btn-admin").addEventListener("click", () => {
+    document.getElementById("role-btn-admin").classList.add("selected");
+    document.getElementById("role-btn-user").classList.remove("selected");
+})

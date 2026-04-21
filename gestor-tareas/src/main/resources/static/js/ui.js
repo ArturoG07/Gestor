@@ -79,3 +79,7 @@ function filtrarTareas(tareas) {
     if (filtro === 'todos') return tareas;
     return tareas.filter(t => t.estadoTarea.toLowerCase() === filtro);
 }
+function cargarPanelAdmin() {
+    document.getElementById('view-admin').classList.add("active");
+    document.getElementById('view-login').classList.remove("active");
+}

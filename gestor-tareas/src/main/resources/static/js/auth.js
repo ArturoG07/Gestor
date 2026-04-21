@@ -9,6 +9,7 @@ async function loginUsuario(event) {
 
     let nombre = document.getElementById('inp-user').value;
     let password = document.getElementById('inp-pass').value;
+    let rol = document.querySelector('.role-selector .role-btn.selected').dataset.role;
 
     try {
         const response = await fetch("http://localhost:8080/api/auth/login", {
@@ -17,13 +18,18 @@ async function loginUsuario(event) {
             credentials: "include",
             body: JSON.stringify({
                 nombre: nombre,
-                password: password })
+                password: password,
+                rol: rol })
         });
 
         if (response.ok) {
             const data = await response.json();
-            cargarTareas();
-            cargarDataUsuario();
+            if (rol == "admin") {
+                cargarPanelAdmin();
+            } else {
+                cargarDataUsuario();
+                cargarTareas();
+            }
 
         } else if (response.status === 401) {
             const errorText = await response.text();

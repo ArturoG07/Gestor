@@ -2,22 +2,22 @@ let data_usuario = { usuario: "", rol: "", email: "", nombre: "" };
 
 
 async function cargarTareas() {
-    const response = await fetch("http://localhost:8080/api/tareas/cargarTareas", {
-        method: "GET",
-        credentials: "include"
-    });
+        const response = await fetch("http://localhost:8080/api/tareas/cargarTareas", {
+            method: "GET",
+            credentials: "include"
+        });
 
-    if (!response.ok) {
-        const error = await response.text();
-        console.log("Error:", error);
-        return;
-    }
+        if (!response.ok) {
+            const error = await response.text();
+            console.log("Error:", error);
+            return;
+        }
 
-    const data = await response.json();
-    document.querySelectorAll(".task-card").forEach((element) => {
-        element.addEventListener("click", detallesTarea);
-    });
-    mostrarTareas(filtrarTareas(data));
+        const data = await response.json();
+        document.querySelectorAll(".task-card").forEach((element) => {
+            element.addEventListener("click", detallesTarea);
+        });
+        mostrarTareas(filtrarTareas(data));
 }
 async function guardarTarea() {
     let titulo = document.getElementById("tarea-titulo").value;

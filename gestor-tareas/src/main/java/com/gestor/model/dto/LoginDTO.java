@@ -6,6 +6,7 @@ package com.gestor.model.dto;
 public class LoginDTO {
 	private String nombre;
 	private String password;
+	private String rol;
 
 	public LoginDTO() {}
 
@@ -14,4 +15,8 @@ public class LoginDTO {
 
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
+
+	public String getRol() { return rol; }
+	public void setRol(String rol) { this.rol = rol; }
+
 }
